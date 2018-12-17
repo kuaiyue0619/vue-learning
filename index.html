@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js学习-首页</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="name" placeholder="你的名字">
+    <h1>你好, {{name}}</h1>
+    <div>{{text.split(',').reverse().join(',')}}</div>
+    <div>{{reversedText1}}</div>
+    <div>{{reversedText2()}}</div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: '',
+            a: 2,
+            text: '123,456'
+        },
+        created: function () {
+            console.log(this.a);
+        },
+        mounted: function () {
+            console.log(this.$el);
+        },
+        computed: {
+            reversedText1: function () {
+                return this.text.split(',').reverse().join(',');
+            }
+        },
+        methods: {
+            reversedText2: function () {
+                return this.text.split(',').reverse().join(',');
+            }
+        }
+    })
+</script>
+</body>
+</html>
