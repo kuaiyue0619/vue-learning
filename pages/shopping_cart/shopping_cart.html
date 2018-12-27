@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>购物车示例</title>
+    <link rel="stylesheet" type="text/css" href="shopping_cart.css">
+</head>
+<body>
+<div id="app" v-cloak>
+    <template v-if="list.length">
+        <table>
+            <thead>
+            <tr>
+                <th>
+                    <input type="checkbox" @click="checkedAll($event)"/>
+                </th>
+                <th></th>
+                <th>商品名称</th>
+                <th>商品单价</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, i) in list">
+                <td>
+                    <input type="checkbox" @click="checked(i)" v-model="item.checked"/>
+                </td>
+                <td>{{i + 1}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>
+                    <button @click="reduce(i)" :disabled="item.count === 1">-</button>
+                    {{item.count}}
+                    <button @click="add(i)">+</button>
+                </td>
+                <td>
+                    <button @click="remove(i)">移除</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div>总价: ￥{{totalPrice}}</div>
+    </template>
+    <div v-else>购物车为空</div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="shopping_cart.js"></script>
+</body>
+</html>
