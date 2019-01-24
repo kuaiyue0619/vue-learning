@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件详解2</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        7.5.1 递归组件<br>
+        <child-component :count="1"></child-component>
+    </div>
+    <br>
+    <div>
+        7.5.2 内联模板<br>
+        <child-component2 inline-template>
+            <div>
+                <h2>在父组件中定义子组件的模板</h2>
+                <div>{{message}}</div>
+                <div>{{msg}}</div>
+            </div>
+        </child-component2>
+    </div>
+    <br>
+    <div>
+        7.5.3 动态组件<br>
+        <component :is="currentView"></component>
+        <button @click="handleChangeView('A')">切换到A</button>
+        <button @click="handleChangeView('B')">切换到B</button>
+        <button @click="handleChangeView('C')">切换到C</button>
+        <button @click="handleChangeView('HOME')">切换到Home</button>
+    </div>
+    <br>
+    <div>
+        7.5.4 异步组件<br>
+        <child-component3></child-component3>
+    </div>
+    <br>
+    <div>
+        7.6.1 $nextTick<br>
+        <div id="div" v-if="showDiv">这是一段文本</div>
+        <button @click="getText">获取div内容</button>
+        div内容: {{divText}}
+    </div>
+    <br>
+    <div>
+        7.6.2 X-Templates<br>
+        <my-component></my-component>
+        <script type="text/x-template" id="my-component">
+            <div>这是组件的内容</div>
+        </script>
+    </div>
+    <br>
+    <div>
+        7.6.3 手动挂载实例<br>
+        <div id="mount-div"></div>
+    </div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="component2.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单与v-model</title>
+</head>
+<body>
+<div id="app">
+    <input type="text" v-model="message" placeholder="输入...">
+    <p>输入的内容是: {{message}}</p>
+
+    <textarea v-model="text" placeholder="输入..."></textarea>
+    <p>输入的内容是: </p>
+    <p style="white-space: pre">{{text}}</p>
+
+    <input type="radio" v-model="picked" value="html" id="html">
+    <label for="html">HTML</label>
+    <br>
+    <input type="radio" v-model="picked" value="js" id="js">
+    <label for="js">JavaScript</label>
+    <br>
+    <input type="radio" v-model="picked" value="css" id="css">
+    <label for="css">CSS</label>
+    <br>
+    <p>选择的项是: {{picked}}</p>
+
+    <input type="checkbox" v-model="checked" value="html" id="htmlForCheckbox">
+    <label for="htmlForCheckbox">HTML</label>
+    <br>
+    <input type="checkbox" v-model="checked" value="js" id="jsForCheckbox">
+    <label for="jsForCheckbox">JavaScript</label>
+    <br>
+    <input type="checkbox" v-model="checked" value="css" id="cssForCheckbox">
+    <label for="cssForCheckbox">CSS</label>
+    <br>
+    <p>选择的项是: {{checked}}</p>
+
+    <select v-model="selected">
+        <option v-for="option in options" :value="option.value">{{option.text}}</option>
+    </select>
+    <p>选择的项是: {{selected}}</p>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<script src="form_&_v_model.js"></script>
+</body>
+</html>

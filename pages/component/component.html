@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件详解</title>
+</head>
+<body>
+<div id="app">
+    <!--<Card style="width: 350px;">
+        <p slot="title">与xxx 聊天中</p>
+    </Card>-->
+    <my-component1></my-component1>
+    <my-component1></my-component1>
+    <my-component1></my-component1>
+
+    <my-component2 message="来自父组件的数据" warning-text="提示信息"></my-component2>
+
+    <input type="text" v-model="parentMessage">
+    <my-component3 :message="parentMessage"></my-component3>
+
+    <my-component4 message="[1,2,3]"></my-component4>
+    <my-component4 :message="[1,2,3]"></my-component4>
+
+    <my-component5 :init-count="1"></my-component5>
+
+    <my-component6 :width="100"></my-component6>
+
+    <!-- 此参数校验,必须使用无min的开发版js,否则不起效 -->
+    <my-component7 :prop-a="11" :prop-b="'abc'" :prop-c="true" :prop-d="22"
+                   :prop-e="[1,2,3]" :prop-f="11"></my-component7>
+    <br>
+    <div>
+        <div>7.3.1 自定义事件</div>
+        <div>
+            总数: {{total}}
+            <my-component8 @increase="handleGetTotal" @reduce="handleGetTotal"
+                           @click.native="handleClick"></my-component8>
+        </div>
+    </div>
+    <br>
+    <div>
+        <div>7.3.2 使用v-model</div>
+        <div>
+            总数: {{total2}}
+            <my-component9 v-model="total2"></my-component9>
+            <button @click="handleReduce">-1</button>
+        </div>
+    </div>
+    <br>
+    <div>
+        7.3.3 非父子组件通信<br>
+        message: {{message}}<br>
+        divRef: {{divRef}} componentRef:{{componentRef}}
+        <div ref="d">内容</div>
+        <button @click="handleRef">通过ref获取子组件实例</button>
+        <component-a ref="comA"></component-a>
+        <button @click="printRef">打印ref</button>
+    </div>
+    <br>
+    <div>
+        7.4.3 slot用法
+        <my-component10>
+            <h2 slot="header">标题</h2>
+            <div>分发的内容</div>
+            <div>更多分发的内容</div>
+            <div slot="footer">底部信息</div>
+        </my-component10>
+    </div>
+    <br>
+    <div>
+        7.4.4 作用域插槽
+        <my-component11>
+            <template scope="props">
+                <div>来自父组件的内容</div>
+                <div>{{props.msg}}</div>
+            </template>
+        </my-component11>
+        <my-list :books="books">
+            <template slot="book" scope="props">
+                <li>{{props.bookName}}</li>
+            </template>
+        </my-list>
+    </div>
+</div>
+<script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+<!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
+<script src="component.js"></script>
+</body>
+</html>
